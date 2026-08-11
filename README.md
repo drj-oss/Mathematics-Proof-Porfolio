@@ -8,6 +8,7 @@ Focus: Mainly solves problems focusing on evaluation of infinite series found in
 **Featured Solutions:**
 
 Solution to College Mathematics Journal 1317-
+[Problem Screenshot](images-and-other-assets/Screenshot 2026-06-20 8.31.10 PM.png)
 
 Solution Overview: Proved uniform convergence using Weierstrass M-Test and Dominated Convergence Theorem to justify integration. Evaluated the integral by differentiating under the integral sign to obtain the closed form solution. 
 
