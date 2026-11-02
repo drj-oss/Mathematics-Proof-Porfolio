@@ -21,9 +21,9 @@ View LaTex: [CMJ 1317 Tex](cmj1317.tex)
 
 Solution to American Mathematical Monthly 12598 (Submitted)-
 
-Solution Overview: Proved uniform convergence using Weierstrass M-Test and Dominated Convergence Theorem to justify integration. Evaluated the integral by differentiating under the integral sign to obtain the closed form solution. 
+Solution Overview: Rewrote the summand as an improper integral of the exponential function. Justified the swapping of integration and summation using the Dominated Convergence Theorem. Performed a series of substitutions and partial fraction decompositions to arrive at the closed form solution.
 
-Topics: Dominated Convergence Theorem, Leibniz Integral Rule, Lebesgue Integration, Weierstrass M-Test, Uniform Convergence
+Topics: Dominated Convergence Theorem, Jacobian Determinant, Lebesgue Integration, Uniform Convergence
 
 View PDF: [AMM 12598 PDF](Solution_to_American_Mathematical_Monthly_Problem_12598.pdf)
 
