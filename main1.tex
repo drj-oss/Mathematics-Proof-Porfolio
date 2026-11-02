@@ -1,0 +1,370 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amsthm,amssymb,amsxtra} %Required for mathematical equations and symbols
+\usepackage{mathtools} %Add-on to amsmath
+
+\title{Solution to American Mathematical Monthly Problem 12598}
+\author{Jayden Brown-Akoto}
+\date{August 2026}
+
+\begin{document}
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Screenshot 2026-08-16 2.29.22 PM.png}
+    \label{fig:placeholder}
+\end{figure}
+\subsubsection*{Solution to Problem 12598 in Amer. Math. Monthly 133 (2026)}
+\begin{center}
+    Jayden Brown-Akoto (student author)
+\end{center}
+
+We show that the desired sums are $\ln(2)/4+\pi/8$ and $\pi^{2}/32+\pi/8-\ln(2)/4$, respectively.
+
+\vspace{5mm}
+
+\textbf{(a)} Let 
+
+\begin{equation*}
+    S := \sum_{n=1}^{\infty}(-1)^{n-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^k}{n+2k}\right).
+\end{equation*}
+
+Then, we can rewrite $S$ to get
+
+\begin{equation*}
+    S =\sum_{n=1}^{\infty}\sum_{k=0}^{\infty}\frac{(-1)^{n-1}(-1)^k}{n+2k} =\sum_{n=1}^{\infty}\sum_{k=0}^{\infty}\int_{0}^{\infty}(-1)^{n-1}(-1)^ke^{-(n+2k)t}dt.
+\end{equation*}
+
+\vspace{5mm} 
+
+To justify the interchange of integration and double summation, we apply the dominated convergence theorem twice. For the first swap, we define the sequence of functions
+
+\begin{align*}
+    f_{n, K}(t):=\sum_{k=0}^{K}(-1)^{n-1}(-1)^ke^{-(n+2k)t}dt.
+\end{align*}
+
+\vspace{5mm} 
+
+We note that as $K \to \infty$ the sequence of functions converges pointwise for all $t>0$. 
+
+\vspace{5mm} 
+
+Then
+\begin{align*}
+    |f_{n, K}(t)|&=\left|\sum_{k=0}^{K}(-1)^{n-1}(-1)^ke^{-(n+2k)t}\right| = \left|e^{-nt}\cdot\frac{1-(-e^{-2t})^{(K+1)}}{1+e^{-2t}}\right| \\ &\leq \left|e^{-nt}\cdot\frac{1+e^{-2t(K+1)}}{1+e^{-2t}}\right|= e^{-nt}\cdot\frac{1+e^{-2t(K+1)}}{1+e^{-2t}} \leq e^{-nt}
+\end{align*}
+
+ for all $n\geq1$, $K \geq 0$, and $t\geq0$. Additionally, $\int_0^{\infty}e^{-nt}dt=1/n$ for all $n\geq1$. Thus, by the dominated convergence theorem, 
+\begin{equation*}
+    S=\sum_{n=1}^{\infty}\int_{0}^{\infty}\sum_{k=0}^{\infty}(-1)^{n-1}(-1)^ke^{-(n+2k)t}dt.
+\end{equation*}
+ 
+
+\vspace{5mm}
+
+To justify the second swap, we define a sequence of functions
+\begin{align*}
+    m_{N}(t):=\sum_{n=1}^{N}\sum_{k=0}^{\infty}(-1)^{n-1}(-1)^ke^{-(n+2k)t}dt.
+\end{align*}
+
+We note that as $N \to \infty$ the sequence converges pointwise for all $t>0$.
+
+\vspace{5mm}
+
+Then 
+\begin{align*}
+    |m_N(t)|&=\left|\sum_{n=1}^{N}\sum_{k=0}^{\infty}(-1)^{n-1}(-1)^ke^{-(n+2k)t}\right| = \left|e^{-t}\cdot\frac{1-(-e^{-t})^N}{(1+e^{-t})(1+e^{-2t})}\right|\\ &\leq \left|e^{-t}\cdot   \frac{1+e^{-Nt}}{(1+e^{-t})(1+e^{-2t})}\right| = e^{-t}\cdot   \frac{1+e^{-Nt}}{(1+e^{-t})(1+e^{-2t})} \leq  e^{-t}
+\end{align*}
+
+for all $N \geq 1$ and $t\geq0$. Additionally, $\int_0^{\infty}e^{-t}dt=1$. Thus, by the dominated convergence theorem, 
+\begin{equation*}
+    S=\int_{0}^{\infty}\sum_{n=1}^{\infty}\sum_{k=0}^{\infty}(-1)^{n-1}(-1)^ke^{-(n+2k)t}dt.
+\end{equation*}
+
+\vspace{5mm}
+
+Evaluating the double sum, we get
+
+\begin{align*}
+    S &= \int_{0}^{\infty}\sum_{n=1}^{\infty}\sum_{k=0}^{\infty}(-1)^{n-1}(-1)^ke^{-(n+2k)t}dt \\
+    &= \int_{0}^{\infty}\left(\sum_{n=1}^{\infty}(-1)^{n-1}e^{-nt}\right)\left(\sum_{k=0}^{\infty}(-1)^ke^{-2kt}\right)dt \\
+    &=\int_{0}^{\infty}\left(\frac{e^{-t}}{1+e^{-t}}\right)\left(\frac{1}{1+e^{-2t}}\right)dt \\
+    &= \int_{0}^{\infty}\frac{e^{-t}}{(1+e^{-t})(1+e^{-2t})}dt.
+\end{align*}
+
+\vspace{5mm}
+
+Now, we rearrange the integrand and perform the substitution $x=1+e^{-t}$ to obtain
+
+\begin{align*}
+    \int_{0}^{\infty}\frac{e^{-t}}{(1+e^{-t})(1+e^{-2t})}dt &= -\int_{0}^{\infty}\frac{-e^{-t}}{(1+e^{-t})((1+e^{-t})(-1+e^{-t})+2)}dt \\ 
+    &=-\int_{2}^{1}\frac{1}{x(x(x-2)+2)}dx \\
+    &= \int_{1}^{2}\frac{1}{x(x^2-2x+2)}dx.
+\end{align*}
+
+We then decompose the integrand to obtain 
+
+\begin{align*}
+     \int_{1}^{2}\frac{1}{x(x^2-2x+2)}d&x = \int_{1}^{2}\left(\frac{1}{2x}+\frac{1}{x^2-2x+2}-\frac{x}{2(x^2-2x+2)}\right)dx \\
+     &=\frac{1}{2}\int_{1}^{2}\frac{1}{x}dx+\int_{1}^{2}\frac{1}{x^2-2x+2}dx-\frac{1}{2}\int_{1}^{2}\frac{x}{x^2-2x+2}dx.
+\end{align*}
+
+\vspace{5mm}
+
+We denote the result as $I_1+I_2+I_3$.
+
+\vspace{5mm}
+
+Evaluating $I_1$, we get
+\begin{align*}
+    I_1=\frac{1}{2}\int_{1}^{2}\frac{1}{x}dx=\frac{1}{2}(\ln(2)-\ln(1))=\frac{\ln(2)}{2}.
+\end{align*}
+
+Evaluating $I_2$, we get 
+\begin{align*}
+    I_2&=\int_{1}^{2}\frac{1}{x^2-2x+2}dx = \int_{1}^{2}\frac{1}{(x-1)^2+1}dx \\
+     &=\arctan(2-1)-\arctan(1-1) = \arctan(1)=\frac{\pi}{4}.
+\end{align*}
+
+To evaluate $I_3$, we begin by integrating by parts with $u=x$ and \newline $v'={1}/({x^2-2x+2})$. Hence, 
+
+\begin{align*}
+    I_3=-\frac{1}{2}\int_{1}^{2}\frac{x}{x^2-2x+2}dx&=-\frac{x\arctan(x-1)}{2}\Big|_{1}^{2}+\frac{1}{2}\int_{1}^{2}\arctan(x-1)dx \\
+     &= -\frac{\pi}{4}+\frac{1}{2}\int_{1}^{2}\arctan(x-1)dx.
+\end{align*}
+
+For the remaining integral, we make the substitution $x=\tan(\theta)+1$ and obtain
+\begin{align*}
+   \frac{1}{2}\int_{1}^{2}\arctan(x-1)dx=\frac{1}{2}\int_{0}^{\frac{\pi}{4}}\arctan(\tan(\theta))\sec^2(\theta)d\theta=\frac{1}{2}\int_{0}^{\frac{\pi}{4}}\theta\sec^2(\theta)d\theta.
+\end{align*}
+
+Then, we integrate by parts with $u=\theta$ and $v'=\sec^2(\theta)$ to get
+
+\begin{align*}
+   \frac{1}{2}\int_{0}^{\frac{\pi}{4}}\theta\sec^2(\theta)d\theta&=\frac{1}{2}\left(\theta\tan\theta\Big|_{0}^{\frac{\pi}{4}}-\int_{0}^{\frac{\pi}{4}}\tan\theta d\theta\right) \\ 
+   &=\frac{1}{2}\left(\theta\tan\theta\Big|_{0}^{\frac{\pi}{4}}+\ln(|\cos\theta|)\Big|_{0}^{\frac{\pi}{4}}\right) \\
+   &=\frac{1}{2}\left(\frac{\pi}{4}-\frac{\ln(2)}{2}\right) \\
+   &= \frac{\pi}{8}-\frac{\ln(2)}{4}.
+\end{align*}
+
+Thus, $I_3=-\pi/4+\pi/8-\ln(2)/4$ and
+
+\begin{align*}
+   I_1+I_2+I_3=\frac{\ln(2)}{2}+\frac{\pi}{4}+\frac{\pi}{8}-\frac{\ln(2)}{4}-\frac{\pi}{4}=\frac{\ln(2)}{4}+\frac{\pi}{8}.
+\end{align*}
+
+Therefore,
+\begin{align*}
+   S=\sum_{n=1}^{\infty}(-1)^{n-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^k}{n+2k}\right)=\frac{\ln(2)}{4}+\frac{\pi}{8}.
+\end{align*}
+\vspace{5mm}
+
+\textbf{(b)} Let 
+
+\begin{equation*}
+    S := \sum_{n=1}^{\infty}(-1)^{n-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^k}{n+2k}\right)^2
+\end{equation*}
+
+and 
+
+\begin{equation*}
+    J_n := \sum_{k=0}^{\infty}\frac{(-1)^k}{n+2k}.
+\end{equation*}
+
+Then 
+
+\begin{align*}
+    &S=\sum_{n=1}^{\infty}(-1)^{n-1}J_n^2.
+\end{align*}
+
+\vspace{5mm}
+
+Additionally, $J_n$ can be rewritten as
+\begin{align*}
+    \sum_{k=0}^{\infty}\int_{0}^{\infty}(-1)^{k}e^{-(n+2k)s}ds.
+\end{align*}
+
+To justify swapping integration and summation, we take a similar approach as used to justify the first swap in part \textbf{(a)} and define a sequence of functions
+\begin{align*}
+    f_{n,K}(s):=\sum_{k=0}^{K}(-1)^ke^{-(n+2k)s}ds.
+\end{align*}
+
+We note that as $K \to \infty$ the sequence converges pointwise for all $s>0$.
+
+\vspace{5mm}
+
+Then 
+\begin{align*}
+    |f_{n, K}(s)|&=\left|\sum_{k=0}^{K}(-1)^ke^{-(n+2k)s}\right| = \left|e^{-ns}\cdot\frac{1-(-e^{-2s})^{(K+1)}}{1+e^{-2s}}\right| \\ &\leq e^{-ns}\cdot\left|\frac{1+e^{-2s(K+1)}}{1+e^{-2s}}\right| \leq e^{-ns}
+\end{align*}
+for all $K \geq 0$ and $s \geq 0$. Moreover, $\int_0^\infty e^{-ns}ds=1/n$. Thus, by the dominated convergence theorem,
+\begin{align*}
+    \sum_{k=0}^{\infty}\int_{0}^{\infty}(-1)^{k}e^{-(n+2k)s}ds=\int_{0}^{\infty}\sum_{k=0}^{\infty}(-1)^{k}e^{-(n+2k)s}ds.
+\end{align*}
+
+Hence,
+\begin{align*}
+    J_n^2=J_n\cdot J_n&=\left(\int_{0}^{\infty}\sum_{k=0}^{\infty}(-1)^{k}e^{-(n+2k)s}ds\right)\left(\int_{0}^{\infty}\sum_{k=0}^{\infty}(-1)^{k}e^{-(n+2k)t}dt\right) \\
+    &= \int_{0}^{\infty}\int_{0}^{\infty}\left(\sum_{k=0}^{\infty}(-1)^{k}e^{-(n+2k)s}\right)\left(\sum_{k=0}^{\infty}(-1)^{k}e^{-(n+2k)t}\right)dsdt \\
+    &= \int_{0}^{\infty}\int_{0}^{\infty}\left(\frac{e^{-ns}}{1+e^{-2s}}\right)\left(\frac{e^{-nt}}{1+e^{-2t}}\right)dsdt \\
+    &=\int_{0}^{\infty}\int_{0}^{\infty}\frac{e^{-n(s+t)}}{(1+e^{-2s})(1+e^{-2t})}dsdt.
+\end{align*}
+
+\vspace{5mm}
+
+Substituting $J_n^2$ into $S$, we get
+
+\begin{align*}
+    S &= \sum_{n=1}^{\infty}(-1)^{n-1}\int_{0}^{\infty}\int_{0}^{\infty}\frac{e^{-n(s+t)}}{(1+e^{-2s})(1+e^{-2t})}dsdt\\
+     &= \sum_{n=1}^{\infty}\int_{0}^{\infty}\int_{0}^{\infty}\frac{(-1)^{n-1}e^{-n(s+t)}}{(1+e^{-2s})(1+e^{-2t})}dsdt.
+\end{align*}
+
+\vspace{5mm}
+
+To justify swapping summation and double integration, we use the dominated convergence theorem again. 
+
+\vspace{5mm}
+
+We define a sequence of multivariate functions
+\begin{align*}
+    f_N(s, t)=\sum_{n=1}^{N}\frac{(-1)^{n-1}e^{-n(s+t)}}{(1+e^{-2s})(1+e^{-2t})}.
+\end{align*}.
+
+We note that as $N \to \infty$ the sequence converges pointwise for all $s,t>0$.
+
+\vspace{5mm}
+
+Then,
+
+\begin{align*}
+    \left|\sum_{n=1}^{N}\frac{(-1)^{n-1}e^{-n(s+t)}}{(1+e^{-2s})(1+e^{-2t})}\right| &\leq \left|e^{-(s+t)}\cdot\frac{1-\left(-e^{-(s+t)}\right)^N}{(1+e^{-(s+t)})(1+e^{-2s})(1+e^{-2t})}\right| \\
+    &\leq \left|e^{-(s+t)}\cdot\frac{1+e^{-N(s+t)}}{(1+e^{-(s+t)})(1+e^{-2s})(1+e^{-2t})}\right| \\ &= e^{-(s+t)}\cdot\frac{1+e^{-N(s+t)}}{(1+e^{-(s+t)})(1+e^{-2s})(1+e^{-2t})} \\ &\leq e^{-(s+t)}
+\end{align*}
+
+for all $N \geq 1$ and $s,t \geq 0$. Additionally, $\int_{0}^{\infty}\int_{0}^{\infty}e^{-(s+t)}dsdt=1$. Thus, by the dominated convergence theorem,
+
+\begin{align*}
+    S = \int_{0}^{\infty}\int_{0}^{\infty}\sum_{n=1}^{\infty}\frac{(-1)^{n-1}e^{-n(s+t)}}{(1+e^{-2s})(1+e^{-2t})}dsdt.
+\end{align*}
+\vspace{5mm}
+
+Evaluating the sum, we obtain
+
+\begin{align*}
+    S &= \int_{0}^{\infty}\int_{0}^{\infty}\sum_{n=1}^{\infty}\frac{(-1)^{n-1}e^{-n(s+t)}}{(1+e^{-2s})(1+e^{-2t})}dsdt\\
+    &= \int_{0}^{\infty}\int_{0}^{\infty}\frac{e^{-(s+t)}}{(1+e^{-(s+t)})(1+e^{-2s})(1+e^{-2t})}dsdt.
+\end{align*}
+
+\vspace{5mm}
+
+Now, we perform the transformation $s=-\ln u$, $t= -\ln v$. The Jacobian determinant $|\partial(s,t)/\partial(u,v)|$ of this transformation is 
+
+\[
+\begin{vmatrix}
+-\frac{1}{u} & 0  \\
+0 & -\frac{1}{v}
+\end{vmatrix} = \frac{1}{uv}.
+\]
+
+\vspace{5mm}
+
+Hence,
+
+\begin{align*}
+    S &= \int_{0}^{\infty}\int_{0}^{\infty}\frac{e^{-(s+t)}}{(1+e^{-(s+t)})(1+e^{-2s})(1+e^{-2t})}dsdt\\
+    &= \int_{1}^{0}\int_{1}^{0}\frac{uv}{(1+uv)(1+u^2)(1+v^2)}\cdot\frac{1}{uv}dudv \\
+    &= \int_{0}^{1}\int_{0}^{1}\frac{1}{(1+uv)(1+u^2)(1+v^2)}dudv. 
+\end{align*}
+
+\vspace{5mm}
+
+Decomposing the integrand, we get
+\begin{align*}
+    S = &\int_{0}^{1}\int_{0}^{1}\left(\frac{v^2}{(1+uv)(1+v^2)^2}+\frac{1}{(1+u^2)(1+v^2)^2}-\frac{uv}{(1+u^2)(1+v^2)^2}\right)dudv \\
+    = &\int_{0}^{1}\int_{0}^{1}\frac{1}{(1+u^2)(1+v^2)^2}dudv-\int_{0}^{1}\int_{0}^{1}\frac{uv}{(1+u^2)(1+v^2)^2}dudv \\&+\int_{0}^{1}\int_{0}^{1}\frac{v^2}{(1+uv)(1+v^2)^2}dudv.
+\end{align*}
+
+We denote the result as $I_1+-I_2+I_3$.
+
+\vspace{5mm}
+
+Simplifying $I_1$, we obtain
+\begin{align*}
+    I_1&=\int_{0}^{1}\int_{0}^{1}\frac{1}{(1+u^2)(1+v^2)^2}dudv \\&=\left(\int_{0}^{1}\frac{1}{1+u^2}du\right)\left(\int_{0}^{1}\frac{1}{(1+v^2)^2}dv\right) \\
+    &=\arctan(1) \cdot \int_{0}^{1}\frac{1}{(1+v^2)^2}dv \\
+    &=\frac{\pi}{4}\int_{0}^{1}\frac{1}{(1+v^2)^2}dv.
+\end{align*}
+
+\vspace{60mm}
+
+Now, we perform the substitution $v=\tan\theta$ and evaluate the integral to get 
+
+\begin{align*}
+    \frac{\pi}{4}\int_{0}^{1}\frac{1}{(1+v^2)^2}dv&=\frac{\pi}{4}\int_{0}^{\frac{\pi}{4}}\frac{\sec^2\theta}{(1+\tan^2\theta)^2}d\theta \\
+    &=\frac{\pi}{4}\int_{0}^{\frac{\pi}{4}}\frac{\sec^2\theta }{(\sec^2\theta)^2}d\theta \\
+    &=\frac{\pi}{4}\int_{0}^{\frac{\pi}{4}}\frac{1}{\sec^2\theta}d\theta \\
+    &=\frac{\pi}{4}\int_{0}^{\frac{\pi}{4}}\frac{1+\cos2\theta}{2}d\theta \\
+    &=\frac{\pi}{4}\Big(\frac{2\theta+\sin2\theta}{4}\Big|_0^\frac{\pi}{4}\Big) \\
+    &=\frac{\pi}{4}\left(\frac{\pi}{8}+\frac{1}{4}\right)=\frac{\pi^2}{32}+\frac{\pi}{16}.
+\end{align*}
+
+Thus, $I_1=\pi^2/32+\pi/16$.
+
+\vspace{5mm}
+
+Evaluating $-I_2$, we obtain
+\begin{align*}
+    -\int_{0}^{1}\int_{0}^{1}\frac{uv}{(1+u^2)(1+v^2)^2}dudv&=-\left(\int_{0}^{1}\frac{u}{1+u^2}du\right)\left(\int_{0}^{1}\frac{v}{(1+v^2)^2}dv\right) \\
+    &=-\Big(\frac{1}{2}\ln(1+u^2)\Big|_0^1\Big) \cdot \Big(-\frac{1}{2(1+v^2)}\Big|_0^1\Big) \\
+    &=-\frac{\ln(2)}{2}\cdot \frac{1}{4}=-\frac{\ln(2)}{8}.
+\end{align*}
+
+\vspace{5mm}
+
+To evaluate $I_3$, we perform the transformation $u=(x-1)/y$, $v=y$. The Jacobian determinant $|\partial(u, v)/\partial(x,y)|$ of the transformation is 
+
+\[
+\begin{vmatrix}
+\frac{1}{y} & -\frac{(x-1)}{y^2} \\
+0 & 1
+\end{vmatrix} = \frac{1}{y}.
+\]
+
+Therefore,
+\begin{align*}
+    I_3 = \int_{0}^{1}\int_{0}^{1}\frac{v^2}{(1+uv)(1+v^2)^2}dudv&=\int_{0}^{1}\int_{1}^{y+1}\frac{y}{x(1+y^2)^2}dxdy \\ &=\int_{0}^{1}\frac{y}{(1+y^2)^2}\left(\int_{1}^{y+1}\frac{1}{x}dx\right)dy.
+\end{align*}
+
+Evaluating the inner integral, we obtain
+\begin{align*}
+   \int_{0}^{1}\frac{y}{1+y^2}\left(\int_{1}^{y+1}\frac{1}{x}dx\right)dy=\int_{0}^{1}\frac{y\ln(y+1)}{(1+y^2)^2}dy.
+\end{align*}
+
+Then, we integrate by parts with $u=\ln(y+1)$ and $v'=y/(1+y^2)^2$ to obtain
+\begin{align*}
+   \int_{0}^{1}\frac{y\ln(y+1)}{(1+y^2)^2}dy&=-\frac{\ln(y+1)}{2(1+y^2)}\Big|_0^1+\frac{1}{2}\int_{0}^{1}\frac{1}{(1+y)(1+y^2)}dy \\
+   &=-\frac{\ln(2)}{4}+\frac{1}{2}\int_{0}^{1}\frac{1}{(1+y)(1+y^2)}dy. 
+\end{align*}
+We then partially decompose the integrand of the remaining integral to obtain
+\begin{align*}
+  \frac{1}{2}\int_{0}^{1}\frac{1}{(1+y)(1+y^2)}&dy =\frac{1}{2}\int_0^1\left(\frac{1}{2(1+y)}-\frac{y}{2(1+y^2)}+\frac{1}{2(1+y^2)}\right)dy\\
+   =&\frac{1}{4}\int_0^1\frac{1}{1+y}dy-\frac{1}{4}\int_0^1\frac{y}{1+y^2}dy+\frac{1}{4}\int_0^1\frac{1}{1+y^2}dy \\
+   =&\frac{1}{4}\Big(\ln(1+y)\Big|_0^1\Big)-\frac{1}{4}\left(\frac{\ln(1+y^2)}{2}\Big|_0^1\right)+\frac{1}{4}\Big(\arctan(y)\Big|_0^1\Big) \\
+   =&\frac{\ln(2)}{4}-\frac{\ln(2)}{8}+\frac{\pi}{16} \\
+   =&\frac{\ln(2)}{8}+\frac{\pi}{16}.
+\end{align*}
+Thus, $I_3=-\ln(2)/4+\ln(2)/8+\pi/16$ and
+\begin{align*}
+  I_1+-I_2+I_3=\frac{\pi^2}{32}+\frac{\pi}{16}-\frac{\ln(2)}{8}-\frac{\ln(2)}{4}+\frac{\ln(2)}{8}+\frac{\pi}{16}=\frac{\pi^2}{32}+\frac{\pi}{8}-\frac{\ln(2)}{4}.
+\end{align*}
+
+\vspace{5mm}
+
+Therefore,
+\begin{align*}
+  S=\sum_{n=1}^{\infty}(-1)^{n-1}\left(\sum_{k=0}^{\infty}\frac{(-1)^k}{n+2k}\right)^2=\frac{\pi^2}{32}+\frac{\pi}{8}-\frac{\ln(2)}{4}.
+\end{align*}
+\end{document}
+`
